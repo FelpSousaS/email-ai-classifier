@@ -1,6 +1,10 @@
 from pydantic import BaseModel
 
 
+class EmailAnalysisRequestt(BaseModel):
+    text: str
+
+
 class EmailAnalysisResponse(BaseModel):
-    categoria: str
-    resposta_sugerida: str
+    category: str
+    suggested_reply: str

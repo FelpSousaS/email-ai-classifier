@@ -1,9 +1,9 @@
-from fastapi import FastAPI, Request, Form
+from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from app.schemas import EmailAnalysisResponse
+from app.schemas import EmailAnalysisResponse, EmailAnalysisRequestt
 
 app = FastAPI(title="Email AI Classifier")
 
@@ -18,8 +18,8 @@ def home(request: Request):
 
 
 @app.post("/analyze", response_model=EmailAnalysisResponse)
-def analyze_email(email_text: str = Form(...)):
+def analyze_email(payload: EmailAnalysisRequestt):
     return EmailAnalysisResponse(
-        categoria="Produtivo",
-        resposta_sugerida="Obrigado pelo contato. Em breve retornaremos com mais informações.",
+        category="Produtivo",
+        suggested_reply="Obrigado pelo contato. Em breve retornaremos com mais informações.",
     )
