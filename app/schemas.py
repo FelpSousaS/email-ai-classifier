@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class EmailAnalysisRequestt(BaseModel):
+class EmailAnalysisRequest(BaseModel):
     text: str
 
 

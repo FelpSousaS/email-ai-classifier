@@ -7,8 +7,10 @@
   </head>
   <body>
     <h1>Classificador Inteligente de Emails</h1>
-    <form action="/analyze" method="post">
+    <form id="email-form">
+      <label for="email_text">Conteúdo do e-mail:</label><br /><br />
       <textarea
+        id="email_text"
         name="email_text"
         rows="10"
         cols="60"
@@ -17,5 +19,10 @@
       <br /><br />
       <button type="submit">Analisar Email</button>
     </form>
+    <hr />
+    <h2>Resultado</h2>
+    <div id="result"></div>
+
+    <script src="/static/script.js"></script>
   </body>
 </html>
