@@ -2,8 +2,12 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from dotenv import load_dotenv
+
+load_dotenv()
 
 from app.schemas import EmailAnalysisResponse, EmailAnalysisRequest
+from app.nlp.preprocess import preprocess_text
 
 app = FastAPI(title="Email AI Classifier")
 
@@ -19,6 +23,7 @@ def home(request: Request):
 
 @app.post("/analyze", response_model=EmailAnalysisResponse)
 def analyze_email(payload: EmailAnalysisRequest):
+    preprocessed_text = preprocess_text(request.text)
     return EmailAnalysisResponse(
         category="Produtivo",
         suggested_reply="Obrigado pelo contato. Em breve retornaremos com mais informações.",
