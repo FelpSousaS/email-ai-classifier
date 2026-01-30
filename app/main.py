@@ -23,7 +23,7 @@ def home(request: Request):
 
 @app.post("/analyze", response_model=EmailAnalysisResponse)
 def analyze_email(payload: EmailAnalysisRequest):
-    preprocessed_text = preprocess_text(request.text)
+    preprocessed_text = preprocess_text(payload.text)
     return EmailAnalysisResponse(
         category="Produtivo",
         suggested_reply="Obrigado pelo contato. Em breve retornaremos com mais informações.",
