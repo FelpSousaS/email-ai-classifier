@@ -4,26 +4,63 @@
     <meta charset="UTF-8" />
     <title>Email AI Classifier</title>
     <link rel="stylesheet" href="/static/style.css" />
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
   </head>
   <body>
-    <h1>Classificador Inteligente de Emails</h1>
-    <form id="email-form">
-      <label for="email_text">Conteúdo do e-mail:</label><br /><br />
-      <textarea
-        id="email_text"
-        name="email_text"
-        rows="10"
-        cols="60"
-        placeholder="Cole o texto do email aqui..."
-      ></textarea>
-      <br /><br />
-      <label>Ou envie um arquivo (.txt ou .pdf):</label><br />
-      <input type="file" id="file_input" accept=".txt,.pdf" />
-      <button type="submit">Analisar Email</button>
-    </form>
-    <hr />
-    <h2>Resultado</h2>
-    <div id="result"></div>
+    <header class="header">
+      <a href="/" class="logo-link">
+        <img src="/static/logo.png" alt="Logo" class="header-logo" />
+      </a>
+      <div class="header-content">
+        <h1>Email AI Classifier</h1>
+        <p>Automatização inteligente de triagem de e-mails</p>
+      </div>
+    </header>
+
+    <main class="container">
+      <form id="email-form" class="card">
+        <h2>Analisar E-mail</h2>
+
+        <label for="email_text">Conteúdo do e-mail:</label>
+        <textarea
+          class="email-text"
+          id="email_text"
+          name="email_text"
+          placeholder="Cole o texto do email aqui..."
+        ></textarea>
+
+        <div class="divider">ou</div>
+
+        <label>Enviar arquivo (.txt ou .pdf)</label>
+
+        <div class="file-upload">
+          <input type="file" id="file_input" accept=".txt,.pdf" hidden />
+
+          <div class="upload-box" id="upload-box">
+            <div id="upload-placeholder">
+              <span class="upload-icon">📄</span>
+              <p>
+                Clique para selecionar um arquivo<br />
+                <span class="upload-subtext">ou arraste e solte aqui</span>
+              </p>
+            </div>
+
+            <div id="upload-preview" class="hidden">
+              <button type="button" class="remove-file" id="remove-file">
+                ✕
+              </button>
+
+              <div class="file-preview-icon" id="file-icon">📄</div>
+              <p class="file-name" id="file-name"></p>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" id="submit-btn">Analisar e-mail</button>
+      </form>
+
+      <div id="result"></div>
+    </main>
 
     <script src="/static/script.js"></script>
   </body>

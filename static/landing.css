@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #6c788d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.landing-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  min-height: 100vh;
+}
+
+.landing-card {
+  background: linear-gradient(135deg, #04192a, #09253f);
+  color: white;
+  padding: 110px 90px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 1100px;
+  min-height: 75vh;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(4, 25, 42, 0.25);
+}
+
+.landing-card h1 {
+  font-size: 52px;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.landing-card p {
+  font-size: 20px;
+  line-height: 1.7;
+  color: #cfd8e3;
+  margin-bottom: 45px;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.landing-button {
+  display: inline-block;
+  padding: 16px 42px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ff7609, #fc9a06);
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.landing-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 118, 9, 0.35);
+}
+
+.landing-logo {
+  width: 110px;
+  margin-bottom: 30px;
+}
