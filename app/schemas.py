@@ -1,4 +1,10 @@
 from pydantic import BaseModel
+from enum import Enum
+
+
+class EmailCategory(str, Enum):
+    PRODUTIVO = "Produtivo"
+    IMPRODUTIVO = "Improdutivo"
 
 
 class EmailAnalysisRequest(BaseModel):
@@ -6,5 +12,5 @@ class EmailAnalysisRequest(BaseModel):
 
 
 class EmailAnalysisResponse(BaseModel):
-    category: str
+    category: EmailCategory
     suggested_reply: str
