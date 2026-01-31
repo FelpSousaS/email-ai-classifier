@@ -42,6 +42,7 @@ pycparser==3.0
 pydantic==2.12.5
 pydantic_core==2.41.5
 pyparsing==3.3.2
+pypdf==6.6.2
 python-dotenv==1.2.1
 python-multipart==0.0.22
 requests==2.32.5
