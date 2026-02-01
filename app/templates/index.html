@@ -3,65 +3,399 @@
   <head>
     <meta charset="UTF-8" />
     <title>Email AI Classifier</title>
+
     <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="/static/darkmode.css" />
+
     <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
+
   <body>
-    <header class="header">
-      <a href="/" class="logo-link">
-        <img src="/static/logo.png" alt="Logo" class="header-logo" />
+    <!-- =========================================================
+         TOPBAR / BRAND / THEME TOGGLE
+         ========================================================= -->
+    <header class="topbar">
+      <a href="/" class="brand" aria-label="Voltar ao início">
+        <img src="/static/logo.png" alt="Logo" class="brand-logo" />
+
+        <div class="brand-text">
+          <div class="brand-title">Email AI Classifier</div>
+          <div class="brand-subtitle">Classificação inteligente de emails</div>
+        </div>
       </a>
-      <div class="header-content">
-        <h1>Email AI Classifier</h1>
-        <p>Automatização inteligente de triagem de e-mails</p>
-      </div>
+
+      <button
+        type="button"
+        id="theme-toggle"
+        class="icon-btn"
+        aria-label="Alternar tema"
+        title="Alternar tema"
+      >
+        <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M21 12.8A8.5 8.5 0 0 1 11.2 3a6.8 6.8 0 1 0 9.8 9.8Z"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
     </header>
 
-    <main class="container">
-      <form id="email-form" class="card">
-        <h2>Analisar E-mail</h2>
+    <!-- =========================================================
+         MAIN / APP LAYOUT
+         ========================================================= -->
+    <main class="page">
+      <div class="grid" id="grid" data-right="single">
+        <!-- =========================================================
+             LEFT PANEL / INPUT
+             ========================================================= -->
+        <section class="panel panel-left">
+          <!-- =========================================================
+               LEFT PANEL HEADER
+               ========================================================= -->
+          <div class="panel-head">
+            <span class="panel-head-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M7 3h7l3 3v15H7V3Z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M14 3v4h4"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M9 11h6M9 15h6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>
+            <h2 class="panel-title">Entrada</h2>
+          </div>
 
-        <label for="email_text">Conteúdo do e-mail:</label>
-        <textarea
-          class="email-text"
-          id="email_text"
-          name="email_text"
-          placeholder="Cole o texto do email aqui..."
-        ></textarea>
+          <!-- =========================================================
+               FORM / INPUTS
+               ========================================================= -->
+          <form id="email-form" class="form form-sticky">
+            <div class="form-body">
+              <!-- =========================================================
+                   SEGMENTED TABS
+                   ========================================================= -->
+              <div class="segmented">
+                <button type="button" class="seg-btn is-active" id="tab-paste">
+                  Colar texto
+                </button>
+                <button type="button" class="seg-btn" id="tab-upload">
+                  Upload
+                </button>
+              </div>
 
-        <div class="divider">ou</div>
+              <!-- =========================================================
+                   PASTE PANE
+                   ========================================================= -->
+              <div id="paste-pane">
+                <label for="email_text" class="label">Conteúdo do email</label>
+                <textarea
+                  class="textarea"
+                  id="email_text"
+                  name="email_text"
+                  placeholder="Cole o texto do email aqui..."
+                ></textarea>
+              </div>
 
-        <label>Enviar arquivo (.txt ou .pdf)</label>
+              <!-- =========================================================
+                   UPLOAD PANE
+                   ========================================================= -->
+              <div id="upload-pane" class="hidden">
+                <label class="label">Enviar arquivo (.txt ou .pdf)</label>
 
-        <div class="file-upload">
-          <input type="file" id="file_input" accept=".txt,.pdf" hidden />
+                <div class="file-upload">
+                  <input
+                    type="file"
+                    id="file_input"
+                    accept=".txt,.pdf"
+                    hidden
+                  />
 
-          <div class="upload-box" id="upload-box">
-            <div id="upload-placeholder">
-              <span class="upload-icon">📄</span>
-              <p>
-                Clique para selecionar um arquivo<br />
-                <span class="upload-subtext">ou arraste e solte aqui</span>
+                  <div class="upload-box" id="upload-box">
+                    <!-- =========================================================
+                         UPLOAD PLACEHOLDER
+                         ========================================================= -->
+                    <div class="upload-placeholder" id="upload-placeholder">
+                      <span class="upload-icon" aria-hidden="true">
+                        <svg
+                          class="icon icon-lg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M12 16V4"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                          />
+                          <path
+                            d="M8 8l4-4 4 4"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M4 16v4h16v-4"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </span>
+
+                      <p class="upload-title">
+                        Clique para selecionar um arquivo<br />
+                        <span class="upload-subtext"
+                          >ou arraste e solte aqui</span
+                        >
+                      </p>
+                    </div>
+
+                    <!-- =========================================================
+                         UPLOAD PREVIEW
+                         ========================================================= -->
+                    <div id="upload-preview" class="hidden">
+                      <button
+                        type="button"
+                        class="remove-file"
+                        id="remove-file"
+                        aria-label="Remover arquivo"
+                      >
+                        ✕
+                      </button>
+
+                      <div class="file-preview-icon" aria-hidden="true">
+                        <svg
+                          class="icon icon-xl"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <path
+                            d="M7 3h7l3 3v15H7V3Z"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linejoin="round"
+                          />
+                          <path
+                            d="M14 3v4h4"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </div>
+
+                      <p class="file-name" id="file-name"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- =========================================================
+                   INLINE ERROR
+                   ========================================================= -->
+              <div
+                id="inline-error"
+                class="inline-error hidden"
+                role="alert"
+                aria-live="polite"
+              >
+                <span class="inline-error-icon" aria-hidden="true">!</span>
+                <span id="inline-error-text"></span>
+              </div>
+            </div>
+
+            <!-- =========================================================
+                 FORM FOOTER / SUBMIT
+                 ========================================================= -->
+            <div class="form-footer">
+              <button type="submit" id="submit-btn" class="btn-primary">
+                Processar Email
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- =========================================================
+             RIGHT PANEL / EMPTY + PROCESSING
+             ========================================================= -->
+        <section class="panel panel-right" id="result-panel">
+          <div id="result">
+            <div class="empty">
+              <div class="empty-icon" aria-hidden="true">
+                <svg class="icon icon-xl" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 7h16v10H4V7Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M4 7l8 6 8-6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+
+              <p class="empty-title">Nenhum email processado</p>
+              <p class="empty-subtitle">
+                Cole o texto de um email ou faça upload de um arquivo para
+                começar a análise.
+              </p>
+              <p class="empty-hint">
+                ← Use o painel à esquerda para inserir um email
               </p>
             </div>
+          </div>
+        </section>
 
-            <div id="upload-preview" class="hidden">
-              <button type="button" class="remove-file" id="remove-file">
-                ✕
-              </button>
+        <!-- =========================================================
+             RIGHT PANEL / CLASSIFICATION
+             ========================================================= -->
+        <section class="panel panel-right hidden" id="classification-panel">
+          <!-- =========================================================
+               CLASSIFICATION HEADER
+               ========================================================= -->
+          <div class="inner-head">
+            <h3 class="inner-title">
+              <span class="mini-icon" aria-hidden="true">
+                <svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M4 15.5L9.2 10.8L12.6 14.2L20 6.8"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M16.8 6.8H20V10"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+              Classificação
+            </h3>
+          </div>
 
-              <div class="file-preview-icon" id="file-icon">📄</div>
-              <p class="file-name" id="file-name"></p>
+          <!-- =========================================================
+               CATEGORY / CONFIDENCE
+               ========================================================= -->
+          <div class="classify-row">
+            <span class="badge produtivo" id="category-badge">
+              <span class="badge-icon" aria-hidden="true">✓</span>
+              <span id="category-text">Produtivo</span>
+            </span>
+
+            <div class="confidence-block">
+              <div class="confidence-value" id="confidence-value">87%</div>
+              <div class="confidence-label">Confiança</div>
+            </div>
+
+            <div class="progress" aria-label="Barra de confiança">
+              <div id="confidence-bar"></div>
             </div>
           </div>
-        </div>
 
-        <button type="submit" id="submit-btn">Analisar e-mail</button>
-      </form>
+          <!-- =========================================================
+               REASONS
+               ========================================================= -->
+          <div class="reasons hidden" id="reasons">
+            <p class="reasons-title">
+              <span class="mini-icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 6h16M4 12h16M4 18h10"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+              Motivos da classificação:
+            </p>
+            <ul class="reasons-list" id="reasons-list"></ul>
+          </div>
+        </section>
 
-      <div id="result"></div>
+        <!-- =========================================================
+             RIGHT PANEL / SUGGESTED REPLY
+             ========================================================= -->
+        <section class="panel panel-right hidden" id="reply-panel">
+          <!-- =========================================================
+               REPLY HEADER
+               ========================================================= -->
+          <div class="inner-head">
+            <h3 class="inner-title">
+              <span class="mini-icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 4h16v12H7l-3 3V4Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M8 8h8M8 11h6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+              Resposta sugerida
+            </h3>
+          </div>
+
+          <!-- =========================================================
+               REPLY CONTENT
+               ========================================================= -->
+          <div class="reply-box">
+            <div class="reply-scroll" id="suggested-reply"></div>
+          </div>
+
+          <!-- =========================================================
+               REPLY ACTIONS
+               ========================================================= -->
+          <div class="reply-actions">
+            <button type="button" class="btn-secondary" id="copy-reply">
+              <span aria-hidden="true">⧉</span> Copiar
+            </button>
+            <span class="toast hidden" id="copy-toast">Copiado!</span>
+          </div>
+        </section>
+      </div>
     </main>
 
+    <!-- =========================================================
+         SCRIPTS
+         ========================================================= -->
     <script src="/static/script.js"></script>
   </body>
 </html>

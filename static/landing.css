@@ -1,75 +1,219 @@
+/* =========================================================
+   RESET / BASE
+   ========================================================= */
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body {
+  margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
-  background-color: #6c788d;
+  background-color: #f6f8fc;
+  color: #04192a;
+}
+
+/* =========================================================
+   TOPBAR / BRAND 
+   ========================================================= */
+.topbar {
+  height: 72px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  justify-content: space-between;
+  padding: 0 24px;
+  background: #ffffff;
+  border-bottom: 1px solid #e6ebf5;
 }
 
-.landing-container {
-  width: 100%;
+.brand {
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 40px;
-  min-height: 100vh;
-}
-
-.landing-card {
-  background: linear-gradient(135deg, #04192a, #09253f);
-  color: white;
-  padding: 110px 90px;
-  border-radius: 20px;
-  width: 100%;
-  max-width: 1100px;
-  min-height: 75vh;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  box-shadow: 0 30px 80px rgba(4, 25, 42, 0.25);
-}
-
-.landing-card h1 {
-  font-size: 52px;
-  margin-bottom: 30px;
-  font-weight: 700;
-}
-
-.landing-card p {
-  font-size: 20px;
-  line-height: 1.7;
-  color: #cfd8e3;
-  margin-bottom: 45px;
-  max-width: 750px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.landing-button {
-  display: inline-block;
-  padding: 16px 42px;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #ff7609, #fc9a06);
-  color: white;
-  font-weight: 600;
-  font-size: 16px;
+  gap: 12px;
   text-decoration: none;
-  transition: 0.2s ease;
+  color: inherit;
 }
 
-.landing-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(255, 118, 9, 0.35);
+.brand-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  object-fit: cover;
 }
 
-.landing-logo {
-  width: 110px;
-  margin-bottom: 30px;
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-title {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.brand-subtitle {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #6e7a8f;
+}
+
+/* =========================================================
+   ICON BUTTONS
+   ========================================================= */
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid #e6ebf5;
+  background: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fe8907;
+}
+
+.icon-btn:hover {
+  background: rgba(254, 137, 7, 0.06);
+  border-color: rgba(254, 137, 7, 0.25);
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  color: currentColor;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 44px 24px 64px;
+}
+
+.hero-inner {
+  width: 100%;
+  max-width: 980px;
+  text-align: center;
+}
+
+.hero-title {
+  margin: 0;
+  font-size: 64px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.accent {
+  color: #fe8907; /
+}
+
+.hero-subtitle {
+  margin: 18px auto 0;
+  max-width: 760px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #6e7a8f;
+}
+
+.hero-actions {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border: none;
+  border-radius: 12px;
+  background: #fe8907;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.btn-primary:hover {
+  background: #e97805;
+  box-shadow: 0 10px 22px rgba(254, 137, 7, 0.25);
+  transform: translateY(-1px);
+}
+
+.arrow {
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 980px) {
+  .topbar {
+    padding: 0 12px;
+    height: 64px;
+  }
+
+  .hero {
+    min-height: calc(100vh - 64px);
+    padding: 28px 14px 48px;
+  }
+
+  .brand-logo {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+
+  .brand-title {
+    font-size: 14px;
+  }
+
+  .brand-subtitle {
+    font-size: 11px;
+  }
+
+  .hero-title {
+    font-size: 44px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 520px) {
+  .topbar {
+    height: auto;
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .brand-subtitle {
+    display: none;
+  }
+
+  .hero-title {
+    font-size: 36px;
+  }
+
+  .btn-primary {
+    width: 100%;
+    max-width: 360px;
+  }
 }

@@ -1,0 +1,159 @@
+/* =========================================================
+   DARK MODE (global — sem repetição)
+   ========================================================= */
+
+/* Base */
+body.dark {
+  background-color: #071624;
+  color: #e6eef8;
+}
+
+/* Header / topbar */
+body.dark .topbar {
+  background: #071624;
+  border-bottom-color: rgba(230, 235, 245, 0.12);
+}
+
+body.dark .brand-subtitle {
+  color: rgba(230, 238, 248, 0.65);
+}
+
+body.dark .icon-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(230, 235, 245, 0.14);
+}
+
+/* Landing */
+body.dark .hero-subtitle {
+  color: rgba(230, 238, 248, 0.7);
+}
+
+/* App panels / cards */
+body.dark .panel {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(230, 235, 245, 0.12);
+  box-shadow: none;
+}
+
+/* Segmented */
+body.dark .segmented {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(230, 235, 245, 0.12);
+}
+
+body.dark .seg-btn {
+  color: rgba(230, 238, 248, 0.65);
+}
+
+body.dark .seg-btn.is-active {
+  background: rgba(255, 255, 255, 0.08);
+  color: #e6eef8;
+  border-color: rgba(230, 235, 245, 0.14);
+  box-shadow: none;
+}
+
+/* Inputs */
+body.dark .label {
+  color: rgba(230, 238, 248, 0.65);
+}
+
+body.dark .textarea {
+  background: rgba(255, 255, 255, 0.04);
+  color: #e6eef8;
+  border-color: rgba(230, 235, 245, 0.12);
+}
+
+body.dark .textarea::placeholder {
+  color: rgba(230, 238, 248, 0.45);
+}
+
+/* Upload */
+body.dark .upload-box {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(230, 235, 245, 0.12);
+}
+
+body.dark .upload-box:hover {
+  border-color: rgba(254, 137, 7, 0.45);
+  background-color: rgba(254, 137, 7, 0.06);
+}
+
+body.dark .upload-box.active {
+  border: 1px solid rgba(254, 137, 7, 0.65);
+  background-color: rgba(254, 137, 7, 0.08);
+}
+
+body.dark .file-name {
+  color: #e6eef8;
+}
+
+/* Processing / headers */
+body.dark .processing-title,
+body.dark .confidence-value,
+body.dark .inner-title {
+  color: #e6eef8;
+}
+
+body.dark .step {
+  color: rgba(230, 238, 248, 0.7);
+}
+
+body.dark .step.active {
+  color: #fe8907;
+}
+
+/* Reply */
+body.dark .reply-box {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(230, 235, 245, 0.12);
+}
+
+body.dark .reply-scroll {
+  color: #e6eef8;
+}
+
+/* Buttons */
+body.dark .btn-secondary {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(230, 235, 245, 0.12);
+  color: #e6eef8;
+}
+
+body.dark .btn-secondary:hover {
+  background: rgba(254, 137, 7, 0.08);
+  border-color: rgba(254, 137, 7, 0.22);
+}
+
+/* Labels / empty states */
+body.dark .confidence-label {
+  color: rgba(230, 238, 248, 0.65);
+}
+
+body.dark .empty-title {
+  color: #e6eef8;
+}
+
+body.dark .empty-subtitle,
+body.dark .empty-hint {
+  color: rgba(230, 238, 248, 0.7);
+}
+
+/* Inline error */
+body.dark .inline-error {
+  border-color: rgba(248, 113, 113, 0.25);
+  background: rgba(248, 113, 113, 0.1);
+  color: rgba(254, 226, 226, 0.95);
+}
+
+body.dark .inline-error-icon {
+  background: rgba(248, 113, 113, 0.18);
+}
+
+/* Reasons */
+body.dark .reasons-title {
+  color: rgba(230, 238, 248, 0.75);
+}
+
+body.dark .reasons-list {
+  color: #e6eef8;
+}

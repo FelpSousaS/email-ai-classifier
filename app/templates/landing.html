@@ -4,21 +4,97 @@
     <meta charset="UTF-8" />
     <title>Email AI Classifier</title>
     <link rel="stylesheet" href="/static/landing.css" />
+    <link rel="stylesheet" href="/static/darkmode.css" />
     <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
+
   <body>
-    <main class="landing-container">
-      <div class="landing-card">
-        <img src="/static/logo.png" alt="Logo" class="landing-logo" />
-        <h1>Email AI Classifier</h1>
-        <p>
-          Automatize a triagem de e-mails com Inteligência Artificial.
-          Classifique mensagens como produtivas ou improdutivas e receba
-          respostas sugeridas automaticamente.
+    <header class="topbar">
+      <a href="/" class="brand" aria-label="Voltar ao início">
+        <img src="/static/logo.png" alt="Logo" class="brand-logo" />
+        <div class="brand-text">
+          <div class="brand-title">Email AI Classifier</div>
+          <div class="brand-subtitle">Classificação inteligente de emails</div>
+        </div>
+      </a>
+
+      <button
+        type="button"
+        id="theme-toggle"
+        class="icon-btn"
+        aria-label="Alternar tema"
+        title="Alternar tema"
+      >
+        <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M21 12.8A8.5 8.5 0 0 1 11.2 3a6.8 6.8 0 1 0 9.8 9.8Z"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </header>
+
+    <main class="hero">
+      <div class="hero-inner">
+        <h1 class="hero-title">
+          Classifique emails e responda
+          <span class="accent">automaticamente</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Automatize a triagem de emails da sua equipe operacional.
+          Classificação inteligente + respostas sugeridas em segundos.
         </p>
 
-        <a href="/app" class="landing-button">Começar</a>
+        <div class="hero-actions">
+          <a href="/app" class="btn-primary hero-cta">
+            Começar agora <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
       </div>
     </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const themeToggle = document.getElementById("theme-toggle");
+
+        const applyTheme = (mode) => {
+          document.body.classList.toggle("dark", mode === "dark");
+          themeToggle.innerHTML =
+            mode === "dark"
+              ? `
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12Z" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            `
+              : `
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M21 12.8A8.5 8.5 0 0 1 11.2 3a6.8 6.8 0 1 0 9.8 9.8Z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            `;
+        };
+
+        const storedTheme = localStorage.getItem("theme");
+        applyTheme(storedTheme === "dark" ? "dark" : "light");
+
+        themeToggle.addEventListener("click", () => {
+          const next = document.body.classList.contains("dark")
+            ? "light"
+            : "dark";
+          localStorage.setItem("theme", next);
+          applyTheme(next);
+        });
+      });
+    </script>
   </body>
 </html>
