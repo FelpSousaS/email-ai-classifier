@@ -31,13 +31,14 @@ def home(request: Request):
 @app.post("/analyze", response_model=EmailAnalysisResponse)
 def analyze_email(payload: EmailAnalysisRequest):
     try:
-
-        preprocessed_text = preprocess_text(payload.text)
+        _ = preprocess_text(payload.text)
 
         ai_result = analyze_email_with_gemini(payload.text)
 
         return EmailAnalysisResponse(
             category=ai_result["category"],
+            confidence=ai_result["confidence"],
+            reasons=ai_result["reasons"],
             suggested_reply=ai_result["suggested_reply"],
         )
 
@@ -56,16 +57,20 @@ def analyze_email_file(file: UploadFile = File(...)):
 
         else:
             raise HTTPException(
-                status_code=400, detail="Formato não suportado! Use .txt ou .pdf"
+                status_code=400,
+                detail="Formato não suportado! Use .txt ou .pdf",
             )
 
-        preprocessed_text = preprocess_text(text)
+        _ = preprocess_text(text)
 
         ai_result = analyze_email_with_gemini(text)
 
         return EmailAnalysisResponse(
             category=ai_result["category"],
+            confidence=ai_result["confidence"],
+            reasons=ai_result["reasons"],
             suggested_reply=ai_result["suggested_reply"],
         )
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
