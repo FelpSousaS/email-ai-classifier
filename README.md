@@ -74,7 +74,7 @@ Antes de rodar o projeto localmente, você precisa ter:
 ### 1️⃣ Clonar o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/email-ai-classifier.git
+git clone https://github.com/FelpSousaS/email-ai-classifier.git
 cd email-ai-classifier
 ```
 
