@@ -6,6 +6,11 @@ O objetivo é **automatizar a triagem inicial de emails**, reduzindo esforço ma
 
 ---
 
+## 🌐 Aplicação Online  
+🔗 https://email-ai-classifier-kmrk.onrender.com/
+
+---
+
 ## 🚀 Visão Geral da Solução
 
 A aplicação permite que o usuário:
